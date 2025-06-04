@@ -1,0 +1,24 @@
+{
+  "name": "mogutou-erp-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"cd frontend && bun run dev\" \"cd backend && bun run dev\"",
+    "build": "bun run --filter frontend build && bun run --filter backend build",
+    "build:frontend": "bun run --filter frontend build",
+    "build:backend": "bun run --filter backend build",
+    "preview": "bun run --filter frontend preview",
+    "test": "bun run --filter backend test",
+    "db:init": "bun run --filter backend db:generate && bun run --filter backend db:migrate",
+    "db:generate": "bun run --filter backend db:generate",
+    "db:migrate": "bun run --filter backend db:migrate"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
